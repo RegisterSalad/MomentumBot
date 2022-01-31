@@ -4,8 +4,9 @@ import requests
 import itertools
 import random
 import statistics as stats
-from Keys import AV_API_KEY # API use API key = 'demo' and symbol ' IBM' for demo results
-
+from Keys import AV_API_KEY
+#Key for demo results = 'demo' 
+#Symbol for demo results = 'IBM' Use at line 12
 
 #Function returns unparsed JSON market data
 def api_caller(symbol: str, key: str):
