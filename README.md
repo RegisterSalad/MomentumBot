@@ -4,4 +4,4 @@ Project Name: Trading Bot using Alpha Vantage API. This will be a low-volume alg
 
 Key for demo results = 'demo'
 Symbol for demo results = 'IBM'
-Use at line 12
+Use at line 13
