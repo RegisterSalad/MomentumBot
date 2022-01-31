@@ -4,12 +4,10 @@ import requests
 import itertools
 import random
 import statistics as stats
-import time
-from Keys import AV_API_KEY
-# MOMENTUN IS = (C_now - C_before)/C_before
-# query from API
+from Keys import AV_API_KEY # API use API key = 'demo' and symbol ' IBM' for demo results
 
 
+#Function returns unparsed JSON market data
 def api_caller(symbol: str, key: str):
     url = f"https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol={symbol}&apikey={key}"
     response = requests.get(url).json()
@@ -20,7 +18,7 @@ def api_caller(symbol: str, key: str):
         print(response)
         return 0
 
-
+#Function
 def purchase_calculator(price_list, results_df, column_dictionary: dict, position_size: float):
     momentum_list = []
     proportion_list = []
@@ -45,14 +43,15 @@ def purchase_calculator(price_list, results_df, column_dictionary: dict, positio
         results_df['Shares to Purchase'] = purchase_dictionary
         results_df['Propotions'] = proportion_dictionary
 
-
+#Function returns latest weekly adjusted closing cost
 def stock_price(raw_data: dict):
     for dict_key in raw_data:
         price = raw_data[dict_key]['5. adjusted close']
         break
     return price
 
-
+# function returns stock momentum
+# Momentum is = (Cost_now - Cost_before)/Cost_before
 def stock_momentum(time_interval, raw_data: dict):
     if time_interval== '1 Week Momentum':
         week_ammount = 2
@@ -108,7 +107,6 @@ def main():
     print(results_df)
 
 
-file_path: str = r'C:\Users\thesu\Desktop\Design\PyStuff\BotProject\MONEY.xlsx'
+file_path: str = r'input desired result path here'
 main()
-time.sleep(60)
-print('It is safe to execute again')
+
